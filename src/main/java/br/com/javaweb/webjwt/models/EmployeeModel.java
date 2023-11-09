@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "employees")
@@ -24,5 +25,8 @@ public class EmployeeModel {
 
     @Enumerated(EnumType.STRING)
     private Department department;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
 }
