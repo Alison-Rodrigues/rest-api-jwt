@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: REST API JWT
+  main:
+    banner-mode: OFF
+  datasource:
+    url: jdbc:postgresql://postgres-local:5432/store?currentSchema=platform_data
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver

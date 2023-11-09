@@ -16,6 +16,16 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<developers>
+		<developer>
+			<name>Alison Rodrigues</name>
+			<email>techsolution.ar@gmail.com</email>
+			<roles>
+				<role>architect</role>
+				<role>full stack developer</role>
+			</roles>
+		</developer>
+	</developers>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
