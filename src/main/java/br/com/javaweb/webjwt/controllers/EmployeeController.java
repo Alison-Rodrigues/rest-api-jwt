@@ -50,10 +50,10 @@ public class EmployeeController {
 
         if (employeeModel.isEmpty()) {
             ResponseDto response = ResponseDto.create();
-            response.setStatus(HttpStatus.NOT_FOUND.name());
+            response.setStatus(HttpStatus.OK.name());
             response.setMessage(String.format(ResponseMessages.MESSAGE_NOT_FOUND, "Employee"));
 
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+            return ResponseEntity.status(HttpStatus.OK)
                     .body(response);
         }
 
