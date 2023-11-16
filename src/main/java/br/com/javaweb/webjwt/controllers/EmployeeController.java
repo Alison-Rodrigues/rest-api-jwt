@@ -50,7 +50,7 @@ public class EmployeeController {
 
         if (employeeModel.isEmpty()) {
             ResponseDto response = ResponseDto.create();
-            response.setStatus(HttpStatus.OK.name());
+            response.setStatus(HttpStatus.NOT_FOUND.name());
             response.setMessage(String.format(ResponseMessages.MESSAGE_NOT_FOUND, "Employee"));
 
             return ResponseEntity.status(HttpStatus.OK)
@@ -67,7 +67,7 @@ public class EmployeeController {
 
     }
 
-    @PostMapping("/create-employee")
+    @PostMapping("/employee")
     public ResponseEntity<?> save(@RequestBody EmployeeDto employeeDto) {
 
         employeeService.save(employeeDto);
@@ -75,8 +75,34 @@ public class EmployeeController {
         ResponseDto response = ResponseDto.create();
         response.setStatus(HttpStatus.CREATED.name());
         response.setMessage(String.format(ResponseMessages.MESSAGE_CREATED, "Employee"));
+        response.setData(employeeDto);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
+    }
+
+    @DeleteMapping("/employee/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Integer id) {
+        Optional<EmployeeModel> employeeModel = employeeService.findById(id);
+
+        if (employeeModel.isEmpty()) {
+            ResponseDto response = ResponseDto.create();
+            response.setStatus(HttpStatus.NOT_FOUND.name());
+            response.setMessage(String.format(ResponseMessages.MESSAGE_NOT_FOUND, "Employee"));
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(response);
+        }
+
+        employeeService.deleteById(id);
+
+        ResponseDto response = ResponseDto.create();
+        response.setStatus(HttpStatus.OK.name());
+        response.setMessage(String.format(ResponseMessages.MESSAGE_DELETED, "Employee"));
+        response.setData(employeeModel);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(response);
+
     }
 }
