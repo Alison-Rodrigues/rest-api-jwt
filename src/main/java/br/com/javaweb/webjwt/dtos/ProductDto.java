@@ -10,5 +10,5 @@ public class ProductDto {
 
     private String description;
     private String sku;
-    private EmployeeModel employee;
+    private Integer employeeId;
 }

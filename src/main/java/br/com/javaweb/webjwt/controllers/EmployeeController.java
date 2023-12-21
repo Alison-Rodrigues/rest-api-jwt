@@ -26,7 +26,7 @@ public class EmployeeController {
 
         if (employeeModel.size() == 0) {
             ResponseDto response = ResponseDto.create();
-            response.setStatus(HttpStatus.OK.name());
+            response.setStatus(HttpStatus.NO_CONTENT.name());
             response.setMessage(ResponseMessages.MESSAGE_NO_CONTENT);
             response.setData(employeeModel);
 

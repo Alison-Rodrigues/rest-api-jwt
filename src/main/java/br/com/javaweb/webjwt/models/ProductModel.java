@@ -22,7 +22,7 @@ public class ProductModel {
     private String sku;
 
     @JoinColumn(name = "employee_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private EmployeeModel employee;
 
     @Column(name = "created_at")
